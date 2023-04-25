@@ -10,7 +10,7 @@ public struct ISOViewItem: Identifiable, Equatable {
     public let displayPrice: String
     public let mostUpdatedTime: String
     
-    init(
+    public init(
         name: String,
         primarySource: String,
         load: Double,
