@@ -2,6 +2,10 @@ import SwiftUI
 
 public struct ISODetailsCard: View {
     let iso: ISOViewItem
+    
+    public init(iso: ISOViewItem) {
+        self.iso = iso
+    }
 
     public var body: some View {
         VStack(spacing: 10) {
