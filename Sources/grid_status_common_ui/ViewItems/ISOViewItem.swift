@@ -1,14 +1,14 @@
 import Foundation
 
-struct ISOViewItem: Identifiable, Equatable {
-    typealias UpdatedTimes = (lmpTimeUtc: String, loadTimeUtc: String, primaryPowerSourceTimeUtc: String)
+public struct ISOViewItem: Identifiable, Equatable {
+    public typealias UpdatedTimes = (lmpTimeUtc: String, loadTimeUtc: String, primaryPowerSourceTimeUtc: String)
 
-    let id: String
-    let displayName: String
-    let displayPrimarySource: String
-    let displayLoad: String
-    let displayPrice: String
-    let mostUpdatedTime: String
+    public let id: String
+    public let displayName: String
+    public let displayPrimarySource: String
+    public let displayLoad: String
+    public let displayPrice: String
+    public let mostUpdatedTime: String
     
     init(
         name: String,
