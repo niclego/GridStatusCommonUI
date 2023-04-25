@@ -31,7 +31,7 @@ extension ISOViewItem {
         self.id = UUID().uuidString
         self.displayName = "California ISO"
         self.displayPrimarySource = "Natural Gas"
-        self.displayLoad = "86700 MW"
+        self.displayLoad = "86,700 MW"
         self.displayPrice = "$44 /MWh"
         self.mostUpdatedTime = "1 minute ago"
     }
@@ -83,7 +83,12 @@ extension ISOViewItem {
     }
     
     private static func displayLoad(for latestLoad: Double) -> String {
-        return "\(Int(round(latestLoad))) MW"
+        let number = Int(round(latestLoad))
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let formattedNumber = numberFormatter.string(from: NSNumber(value:number))
+        
+        return "\(formattedNumber ?? "--") MW"
     }
     
     private static func displayPrimarySource(for latestPrimaryPowerSource: String) -> String {
