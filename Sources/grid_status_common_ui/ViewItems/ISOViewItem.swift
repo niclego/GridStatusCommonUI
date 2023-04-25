@@ -36,7 +36,7 @@ extension ISOViewItem {
         self.mostUpdatedTime = "1 minute ago"
     }
 
-    static let example: ISOViewItem = .init()
+    public static let example: ISOViewItem = .init()
     
     private static func mostUpdatedTime(for latestTimes: UpdatedTimes) -> String {
         let formatter = ISO8601DateFormatter()
