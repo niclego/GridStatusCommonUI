@@ -32,7 +32,7 @@ extension LoadableContent {
         let errorContent: () -> ErrorView
         let content: () -> ContentView
         
-        init(
+        public init(
             loadingState: LoadingState,
             @ViewBuilder errorContent: @escaping () -> ErrorView,
             @ViewBuilder content: @escaping () -> ContentView
