@@ -1,10 +1,10 @@
 import SwiftUI
 
-enum LoadableContent {}
+public enum LoadableContent {}
 
 extension LoadableContent {
-    enum LoadingState: Equatable {
-        static func == (lhs: LoadableContent.LoadingState, rhs: LoadableContent.LoadingState) -> Bool {
+    public enum LoadingState: Equatable {
+        public static func == (lhs: LoadableContent.LoadingState, rhs: LoadableContent.LoadingState) -> Bool {
             switch (lhs, rhs) {
             case(.error, .error):
                 return true
@@ -27,7 +27,7 @@ extension LoadableContent {
 }
 
 extension LoadableContent {
-    struct ContainerView<ContentView: View, ErrorView: View>: View {
+    public struct ContainerView<ContentView: View, ErrorView: View>: View {
         let loadingState: LoadingState
         let errorContent: () -> ErrorView
         let content: () -> ContentView
@@ -42,7 +42,7 @@ extension LoadableContent {
             self.content = content
         }
         
-        var body: some View {
+        public var body: some View {
             switch loadingState {
             case .error:
                 errorContent()

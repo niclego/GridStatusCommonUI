@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum GridStatusColor {
+public enum GridStatusColor {
     case batteries
     case biomass
     case coal
@@ -18,7 +18,7 @@ enum GridStatusColor {
     case title
     case wind
     
-    func color(scheme: ColorScheme) -> Color {
+    public func color(scheme: ColorScheme) -> Color {
         switch scheme {
         case .light:
             return ltColor()
