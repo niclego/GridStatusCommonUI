@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct ISODetailsCardHeader: View {
-    @Environment(\.colorScheme) var colorScheme
-
     let displayName: String
     let updatedTime: String
 
@@ -11,11 +9,11 @@ struct ISODetailsCardHeader: View {
             Text(displayName)
                 .font(.title3)
                 .fontWeight(.bold)
-                .foregroundColor(GridStatusColor.title.color(scheme: colorScheme))
+                .adaptiveForegroundColor(GridStatusColor.title)
             
             Spacer()
             Text(updatedTime).font(.caption)
-                .foregroundColor(GridStatusColor.time.color(scheme: colorScheme))
+                .adaptiveForegroundColor(GridStatusColor.time)
             
         }
     }
