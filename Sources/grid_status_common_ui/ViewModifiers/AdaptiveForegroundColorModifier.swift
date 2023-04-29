@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct AdaptiveForegroundColorModifier: ViewModifier {
+public struct AdaptiveForegroundColorModifier: ViewModifier {
     let color: GridStatusColor
     
     @Environment(\.colorScheme) private var colorScheme
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         content.foregroundColor(resolvedColor)
     }
     
@@ -15,7 +15,7 @@ struct AdaptiveForegroundColorModifier: ViewModifier {
 }
 
 extension View {
-    func adaptiveForegroundColor(
+    public func adaptiveForegroundColor(
         _ color: GridStatusColor
     ) -> some View {
         modifier(AdaptiveForegroundColorModifier(
