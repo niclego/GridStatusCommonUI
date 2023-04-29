@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ISOViewItem: Identifiable, Equatable {
+public struct ISOViewItem: Identifiable, Equatable, Hashable {
     public typealias UpdatedTimes = (lmpTimeUtc: String, loadTimeUtc: String, primaryPowerSourceTimeUtc: String)
 
     public let id: String
