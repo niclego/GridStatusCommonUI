@@ -19,8 +19,8 @@ public struct ISODetailsCard: View {
                 displayPrice: iso.displayPrice
             )
         }
+        .adaptiveBackground(GridStatusColor.cardBackground)
         .padding()
-        .background(.background)
         .cornerRadius(12)
     }
 }

@@ -3,6 +3,7 @@ import SwiftUI
 public enum GridStatusColor {
     case batteries
     case biomass
+    case cardBackground
     case coal
     case dataText
     case dashboardBackground
@@ -31,6 +32,8 @@ public enum GridStatusColor {
     
     private func dtColor() -> Color {
         switch self {
+        case .cardBackground:
+            return Color(red: 0, green: 0, blue: 0)
         case .batteries:
             return Color(red: 1, green: 2, blue: 3)
         case .biomass:
@@ -68,6 +71,8 @@ public enum GridStatusColor {
     
     private func ltColor() -> Color {
         switch self {
+        case .cardBackground:
+            return Color(red: 255/255, green: 255/255, blue: 255/255)
         case .batteries:
             return Color(red: 1, green: 2, blue: 3)
         case .biomass:
