@@ -1,12 +1,18 @@
 import SwiftUI
 
 public enum GridStatusColor {
-    case batteries
-    case biomass
+    // UI Elements
     case cardBackground
-    case coal
     case dataText
     case dashboardBackground
+    case subtitle
+    case time
+    case title
+
+    // Fuel Types
+    case batteries
+    case biomass
+    case coal
     case geothermal
     case imports
     case largeHydro
@@ -14,9 +20,6 @@ public enum GridStatusColor {
     case nuclear
     case other
     case solar
-    case subtitle
-    case time
-    case title
     case wind
     
     public func color(scheme: ColorScheme) -> Color {
@@ -49,7 +52,7 @@ public enum GridStatusColor {
         case .imports:
             return Color(red: 1, green: 2, blue: 3)
         case .largeHydro:
-            return Color(red: 1, green: 2, blue: 3)
+            return Color(red: 156/255, green: 229/255, blue: 180/255)
         case .naturalGas:
             return Color(red: 1, green: 2, blue: 3)
         case .nuclear:
@@ -90,9 +93,9 @@ public enum GridStatusColor {
         case .largeHydro:
             return Color(red: 1, green: 2, blue: 3)
         case .naturalGas:
-            return Color(red: 1, green: 2, blue: 3)
+            return Color(red: 126/255, green: 157/255, blue: 207/255)
         case .nuclear:
-            return Color(red: 1, green: 2, blue: 3)
+            return Color(red: 195/255, green: 230/255, blue: 154/255)
         case .other:
             return Color(red: 1, green: 2, blue: 3)
         case .solar:
@@ -104,7 +107,7 @@ public enum GridStatusColor {
         case .title:
             return Color(red: 48/255, green: 57/255, blue: 71/255)
         case .wind:
-            return Color(red: 1, green: 2, blue: 3)
+            return Color(red: 119/255, green: 186/255, blue: 218/255)
         }
     }
 }
