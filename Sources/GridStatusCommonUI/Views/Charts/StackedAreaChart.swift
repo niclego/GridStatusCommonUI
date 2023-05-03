@@ -2,12 +2,10 @@ import Charts
 import SwiftUI
 
 struct StackedAreaChart: View {
-    let isoName: String
-    let dataType: String
     let config: StackedAreaChartConfig
 
     var body: some View {
-        GroupBox ( "\(dataType) - \(isoName)" ) {
+        GroupBox ( "\(config.dataType) - \(config.isoName)" ) {
             Chart {
                 ForEach(config.data) { data in
                     if let batteries = data.batteries {
@@ -136,8 +134,6 @@ struct StackedAreaChart: View {
 struct StackedArea_Previews: PreviewProvider {
     static var previews: some View {
         StackedAreaChart(
-            isoName: "NYISO",
-            dataType: "Fuel Mix",
             config: StackedAreaChartConfig.example
         )
         .frame(width: 360, height:169)
