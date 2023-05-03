@@ -149,7 +149,16 @@ struct StackedAreaChart: View {
         switch isoId {
         case "caiso":
             return [
-                "Solar": GridStatusColor.solar.color(scheme: colorScheme)
+                "Nuclear": GridStatusColor.nuclear.color(scheme: colorScheme),
+                "Geothermal": GridStatusColor.geothermal.color(scheme: colorScheme),
+                "Biomass": GridStatusColor.biomass.color(scheme: colorScheme),
+                "Large Hydro": GridStatusColor.largeHydro.color(scheme: colorScheme),
+                "Natural Gas": GridStatusColor.naturalGas.color(scheme: colorScheme),
+                "Coal": GridStatusColor.coal.color(scheme: colorScheme),
+                "Wind": GridStatusColor.wind.color(scheme: colorScheme),
+                "Batteries": GridStatusColor.batteries.color(scheme: colorScheme),
+                "Solar": GridStatusColor.solar.color(scheme: colorScheme),
+                "Imports": GridStatusColor.imports.color(scheme: colorScheme),
             ]
         default:
             return KeyValuePairs<String, Color>()
