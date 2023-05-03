@@ -4,13 +4,12 @@ import SwiftUI
 struct StackedAreaChart: View {
     let isoName: String
     let dataType: String
-    let data: [StackedAreaViewItem]
-    let legendData: KeyValuePairs<String, Color>
+    let config: StackedAreaChartConfig
 
     var body: some View {
         GroupBox ( "\(dataType) - \(isoName)" ) {
             Chart {
-                ForEach(data) { data in
+                ForEach(config.data) { data in
                     if let batteries = data.batteries {
                         AreaMark(
                             x: .value("Time", data.startUtc),
@@ -129,7 +128,7 @@ struct StackedAreaChart: View {
                 }
             }
             .chartXAxis {}
-            .chartForegroundStyleScale(legendData)
+            .chartForegroundStyleScale(config.legendData)
         }
     }
 }
@@ -139,38 +138,9 @@ struct StackedArea_Previews: PreviewProvider {
         StackedAreaChart(
             isoName: "NYISO",
             dataType: "Fuel Mix",
-            data: Self.stackedAreaItems(),
-            legendData: Self.legendData()
+            config: StackedAreaChartConfig.example
         )
         .frame(width: 360, height:169)
-    }
-    
-    static func stackedAreaItems() -> [StackedAreaViewItem] {
-        let calendar = Calendar.current
-        let startDate = Date.now
-        let formatter = DateFormatter()
-
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-
-        let items = (1...288).map { i in
-            let date = calendar.date(byAdding: .minute, value: 5 * i, to: startDate)!
-            let timeStr = formatter.string(from: date)
-            return StackedAreaViewItem(
-                startUtc: timeStr
-            )
-        }
-        
-        return items
-    }
-    
-    static func legendData() -> KeyValuePairs<String, Color> {
-        return [
-            "Nuclear": Color(red: 195/255, green: 230/255, blue: 154/255),
-            "Hydro": Color(red: 156/255, green: 229/255, blue: 180/255),
-            "Dual Fuel": Color(red: 240/255, green: 189/255, blue: 144/255),
-            "Natural Gas": Color(red: 126/255, green: 157/255, blue: 207/255),
-            "Wind": Color(red: 119/255, green: 186/255, blue: 218/255)
-        ]
     }
 }
 

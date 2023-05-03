@@ -1,5 +1,4 @@
 import XCTest
-@testable import grid_status_common_ui
 
 final class grid_status_common_uiTests: XCTestCase {
     func testExample() throws {
