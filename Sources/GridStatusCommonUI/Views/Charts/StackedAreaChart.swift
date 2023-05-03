@@ -10,12 +10,19 @@ struct StackedAreaChart: View {
         GroupBox {
             Chart {
                 ForEach(config.data) { data in
-                    if let batteries = data.batteries {
+                    if let nuclear = data.nuclear {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", batteries)
+                            y: .value("Load", nuclear)
                         )
-                        .foregroundStyle(by: .value("Load", "Batteries"))
+                        .foregroundStyle(by: .value("Load", "Nuclear"))
+                    }
+                    if let geothermal = data.geothermal {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", geothermal)
+                        )
+                        .foregroundStyle(by: .value("Load", "Geothermal"))
                     }
                     if let biomass = data.biomass {
                         AreaMark(
@@ -24,12 +31,54 @@ struct StackedAreaChart: View {
                         )
                         .foregroundStyle(by: .value("Load", "Biomass"))
                     }
+                    if let largeHydro = data.largeHydro {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", largeHydro)
+                        )
+                        .foregroundStyle(by: .value("Load", "Large Hydro"))
+                    }
+                    if let naturalGas = data.naturalGas {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", naturalGas)
+                        )
+                        .foregroundStyle(by: .value("Load", "Natural Gas"))
+                    }
                     if let coal = data.coal {
                         AreaMark(
                             x: .value("Time", data.startUtc),
                             y: .value("Load", coal)
                         )
                         .foregroundStyle(by: .value("Load", "Coal"))
+                    }
+                    if let wind = data.wind {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", wind)
+                        )
+                        .foregroundStyle(by: .value("Load", "Wind"))
+                    }
+                    if let batteries = data.batteries {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", batteries)
+                        )
+                        .foregroundStyle(by: .value("Load", "Batteries"))
+                    }
+                    if let solar = data.solar {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", solar)
+                        )
+                        .foregroundStyle(by: .value("Load", "Solar"))
+                    }
+                    if let imports = data.imports {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", imports)
+                        )
+                        .foregroundStyle(by: .value("Load", "Geothermal"))
                     }
                     if let coalAndLignite = data.coalAndLignite {
                         AreaMark(
@@ -45,47 +94,12 @@ struct StackedAreaChart: View {
                         )
                         .foregroundStyle(by: .value("Load", "Dual Fuel"))
                     }
-                    if let geothermal = data.geothermal {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", geothermal)
-                        )
-                        .foregroundStyle(by: .value("Load", "Geothermal"))
-                    }
-                    if let imports = data.imports {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", imports)
-                        )
-                        .foregroundStyle(by: .value("Load", "Geothermal"))
-                    }
                     if let hydro = data.hydro {
                         AreaMark(
                             x: .value("Time", data.startUtc),
                             y: .value("Load", hydro)
                         )
                         .foregroundStyle(by: .value("Load", "Hydro"))
-                    }
-                    if let largeHydro = data.largeHydro {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", largeHydro)
-                        )
-                        .foregroundStyle(by: .value("Load", "Large Hydro/"))
-                    }
-                    if let naturalGas = data.naturalGas {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", naturalGas)
-                        )
-                        .foregroundStyle(by: .value("Load", "Natural Gas"))
-                    }
-                    if let nuclear = data.nuclear {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", nuclear)
-                        )
-                        .foregroundStyle(by: .value("Load", "Nuclear"))
                     }
                     if let oil = data.oil {
                         AreaMark(
@@ -101,22 +115,9 @@ struct StackedAreaChart: View {
                         )
                         .foregroundStyle(by: .value("Load", "Other"))
                     }
-                    if let solar = data.solar {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", solar)
-                        )
-                        .foregroundStyle(by: .value("Load", "Solar"))
-                    }
-                    if let wind = data.wind {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", wind)
-                        )
-                        .foregroundStyle(by: .value("Load", "Wind"))
-                    }
                 }
             }
+            .chartLegend(.hidden)
             .chartYAxis {
                 AxisMarks(position: .leading, values: .automatic) { value in
                     AxisValueLabel() {
@@ -127,18 +128,19 @@ struct StackedAreaChart: View {
                     }
                 }
             }
+
             .chartXAxis {
-                AxisMarks(preset: .aligned) { value in
-                    AxisValueLabel {
-                        if let timeUtc = value.as(String.self),
-                           let label = label(for: timeUtc)
-                        {
-                            Text(label)
-                                .font(.footnote)
-                                .padding([.leading, .trailing])
-                        }
-                    }
-                }
+//                AxisMarks(preset: .aligned) { value in
+//                    AxisValueLabel {
+//                        if let timeUtc = value.as(String.self),
+//                           let label = label(for: timeUtc)
+//                        {
+//                            Text(label)
+//                                .font(.footnote)
+//                                .padding([.leading, .trailing])
+//                        }
+//                    }
+//                }
             }
             .chartForegroundStyleScale(foregroundStyles(isoId: config.isoId))
         }
