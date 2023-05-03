@@ -4,21 +4,21 @@ import SwiftUI
 struct StackedAreaChartItem: Identifiable {
     let startUtc: String
     
-    var batteries: Double? = nil
-    var biomass: Double? = nil
-    var coal: Double? = nil
-    var coalAndLignite: Double? = nil
-    var duelFuel: Double? = nil
-    var geothermal: Double? = nil
-    var imports: Double? = nil
-    var hydro: Double? = nil
-    var largeHydro: Double? = nil
-    var naturalGas: Double? = nil
-    var nuclear: Double? = nil
-    var oil: Double? = nil
-    var other: Double? = nil
-    var solar: Double? = nil
-    var wind: Double? = nil
+    let batteries: Double?
+    let biomass: Double?
+    let coal: Double?
+    let coalAndLignite: Double?
+    let duelFuel: Double?
+    let geothermal: Double?
+    let imports: Double?
+    let hydro: Double?
+    let largeHydro: Double?
+    let naturalGas: Double?
+    let nuclear: Double?
+    let oil: Double?
+    let other: Double?
+    let solar: Double?
+    let wind: Double?
     
     var id: String { startUtc }
     
@@ -43,13 +43,23 @@ struct StackedAreaChartItem: Identifiable {
 }
 
 extension StackedAreaChartItem {
-    init(startUtc: String) {
+    fileprivate init(startUtc: String) {
         self.startUtc = startUtc
-        self.nuclear = 2.9
-        self.hydro = 4.1
-        self.duelFuel = 1.6
-        self.naturalGas = 3.0
-        self.wind = 1.9
+        self.batteries = 1
+        self.biomass = 1
+        self.coal = 1
+        self.coalAndLignite = 1
+        self.duelFuel = 1
+        self.geothermal = 1
+        self.imports = 1
+        self.hydro = 1
+        self.largeHydro = 1
+        self.naturalGas = 1
+        self.nuclear = 1
+        self.oil = 1
+        self.other = 1
+        self.solar = 1
+        self.wind = 1
     }
     
     static let examples: [StackedAreaChartItem] = {
