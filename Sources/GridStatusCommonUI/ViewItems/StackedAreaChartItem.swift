@@ -92,6 +92,9 @@ public struct StackedAreaChartConfig {
     let data: [StackedAreaChartItem]
     let isoId: String
     let dataType: String
+    let showXAxis: Bool = false
+    let showYAxis: Bool = false
+    let showLegend: Bool = false
     
     public init(data: [StackedAreaChartItem], isoId: String, dataType: String) {
         self.data = data

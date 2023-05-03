@@ -117,30 +117,34 @@ struct StackedAreaChart: View {
                     }
                 }
             }
-            .chartLegend(.hidden)
+            .chartLegend(config.showLegend ? .visible : .hidden)
             .chartYAxis {
-                AxisMarks(position: .leading, values: .automatic) { value in
-                    AxisValueLabel() {
-                        if let intValue = value.as(Int.self) {
-                            Text("\(intValue) GW")
-                                .font(.system(size: 10))
+                if config.showYAxis {
+                    AxisMarks(position: .leading, values: .automatic) { value in
+                        AxisValueLabel() {
+                            if let intValue = value.as(Int.self) {
+                                Text("\(intValue) GW")
+                                    .font(.system(size: 10))
+                            }
                         }
                     }
                 }
             }
 
             .chartXAxis {
-//                AxisMarks(preset: .aligned) { value in
-//                    AxisValueLabel {
-//                        if let timeUtc = value.as(String.self),
-//                           let label = label(for: timeUtc)
-//                        {
-//                            Text(label)
-//                                .font(.footnote)
-//                                .padding([.leading, .trailing])
-//                        }
-//                    }
-//                }
+                if config.showXAxis {
+                    AxisMarks(preset: .aligned) { value in
+                        AxisValueLabel {
+                            if let timeUtc = value.as(String.self),
+                               let label = label(for: timeUtc)
+                            {
+                                Text(label)
+                                    .font(.footnote)
+                                    .padding([.leading, .trailing])
+                            }
+                        }
+                    }
+                }
             }
             .chartForegroundStyleScale(foregroundStyles(isoId: config.isoId))
         }
