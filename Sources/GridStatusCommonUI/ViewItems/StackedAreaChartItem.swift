@@ -64,7 +64,7 @@ extension StackedAreaChartItem {
     
     static let examples: [StackedAreaChartItem] = {
         let calendar = Calendar.current
-        let startDate = Date.now
+        let startDate = calendar.startOfDay(for: Date.now)
         let formatter = DateFormatter()
         
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
