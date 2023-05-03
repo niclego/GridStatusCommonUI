@@ -2,8 +2,10 @@ import Charts
 import SwiftUI
 
 struct StackedAreaChart: View {
-    let config: StackedAreaChartConfig
+    @Environment(\.colorScheme) private var colorScheme
 
+    let config: StackedAreaChartConfig
+    
     var body: some View {
         GroupBox {
             Chart {
@@ -138,9 +140,20 @@ struct StackedAreaChart: View {
                     }
                 }
             }
-            .chartForegroundStyleScale(config.legendData)
+            .chartForegroundStyleScale(foregroundStyles(isoId: config.isoId))
         }
         .groupBoxStyle(ClearGroupBoxStyle())
+    }
+    
+    private func foregroundStyles(isoId: String) -> KeyValuePairs<String, Color> {
+        switch isoId {
+        case "caiso":
+            return [
+                "Solar": GridStatusColor.solar.color(scheme: colorScheme)
+            ]
+        default:
+            return KeyValuePairs<String, Color>()
+        }
     }
     
     let dateFormatter: DateFormatter = {
@@ -156,11 +169,11 @@ struct StackedAreaChart: View {
     private func label(for timeUtc: String) -> String? {
         guard let date = isoDateFormatter.date(from: timeUtc) else { return nil }
         let comps = Calendar.current.dateComponents([.hour, .minute], from: date)
-
+        
         guard
             ( comps.hour == 0 && comps.minute == 0 ) ||
-            ( [6, 12, 18].contains(comps.hour) && comps.minute == 0 ) ||
-            ( comps.hour == 23 && comps.minute == 55 )
+                ( [6, 12, 18].contains(comps.hour) && comps.minute == 0 ) ||
+                ( comps.hour == 23 && comps.minute == 55 )
         else { return nil }
         
         if ( comps.hour == 23 && comps.minute == 55 ) {

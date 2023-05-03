@@ -139,3 +139,22 @@ public enum GridStatusColor {
         }
     }
 }
+
+extension GridStatusColor {
+    static func color(for fuelSourceTitle: String) -> GridStatusColor {
+        switch fuelSourceTitle {
+        case "Nuclear":
+            return .nuclear
+        case "Hydro":
+            return .hydro
+        case "Dual Fuel":
+            return .duelFuel
+        case "Natural Gas":
+            return .naturalGas
+        case "Wind":
+            return .wind
+        default:
+            return .other
+        }
+    }
+}

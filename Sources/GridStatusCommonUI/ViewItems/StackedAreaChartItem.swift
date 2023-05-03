@@ -90,34 +90,20 @@ extension StackedAreaChartItem {
 
 public struct StackedAreaChartConfig {
     let data: [StackedAreaChartItem]
-    let legendData: KeyValuePairs<String, Color>
-    let isoName: String?
+    let isoId: String
     let dataType: String
     
-    public init(data: [StackedAreaChartItem], legendData: KeyValuePairs<String, Color>, isoName: String?, dataType: String) {
+    public init(data: [StackedAreaChartItem], isoId: String, dataType: String) {
         self.data = data
-        self.legendData = legendData
-        self.isoName = isoName
+        self.isoId = isoId
         self.dataType = dataType
     }
     
-    var title: String {
-        if let isoName = isoName {
-            return dataType + "- \(isoName)"
-        }
-        
-        return dataType
-    }
+    var title: String { dataType + "- \(isoId.uppercased())" }
     
     public static let example: StackedAreaChartConfig = .init(
         data: StackedAreaChartItem.examples,
-        legendData: [
-        "Nuclear": Color(red: 195/255, green: 230/255, blue: 154/255),
-        "Hydro": Color(red: 156/255, green: 229/255, blue: 180/255),
-        "Dual Fuel": Color(red: 240/255, green: 189/255, blue: 144/255),
-        "Natural Gas": Color(red: 126/255, green: 157/255, blue: 207/255),
-        "Wind": Color(red: 119/255, green: 186/255, blue: 218/255)],
-        isoName: nil,
+        isoId: "caiso",
         dataType: "Fuel Mix"
     )
 }
