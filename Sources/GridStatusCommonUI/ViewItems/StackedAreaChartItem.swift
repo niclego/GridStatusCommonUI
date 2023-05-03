@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct StackedAreaChartItem: Identifiable {
+public struct StackedAreaChartItem: Identifiable {
     let startUtc: String
     
     let batteries: Double?
@@ -20,7 +20,7 @@ struct StackedAreaChartItem: Identifiable {
     let solar: Double?
     let wind: Double?
     
-    var id: String { startUtc }
+    public var id: String { startUtc }
     
     public init(startUtc: String, batteries: Double? = nil, biomass: Double? = nil, coal: Double? = nil, coalAndLignite: Double? = nil, duelFuel: Double? = nil, geothermal: Double? = nil, imports: Double? = nil, hydro: Double? = nil, largeHydro: Double? = nil, naturalGas: Double? = nil, nuclear: Double? = nil, oil: Double? = nil, other: Double? = nil, solar: Double? = nil, wind: Double? = nil) {
         self.startUtc = startUtc
@@ -93,6 +93,13 @@ public struct StackedAreaChartConfig {
     let legendData: KeyValuePairs<String, Color>
     let isoName: String?
     let dataType: String
+    
+    public init(data: [StackedAreaChartItem], legendData: KeyValuePairs<String, Color>, isoName: String?, dataType: String) {
+        self.data = data
+        self.legendData = legendData
+        self.isoName = isoName
+        self.dataType = dataType
+    }
     
     var title: String {
         if let isoName = isoName {
