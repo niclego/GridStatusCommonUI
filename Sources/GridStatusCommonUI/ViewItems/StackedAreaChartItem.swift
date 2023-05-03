@@ -91,8 +91,16 @@ extension StackedAreaChartItem {
 public struct StackedAreaChartConfig {
     let data: [StackedAreaChartItem]
     let legendData: KeyValuePairs<String, Color>
-    let isoName: String
+    let isoName: String?
     let dataType: String
+    
+    var title: String {
+        if let isoName = isoName {
+            return dataType + "- \(isoName)"
+        }
+        
+        return dataType
+    }
     
     public static let example: StackedAreaChartConfig = .init(
         data: StackedAreaChartItem.examples,
@@ -102,7 +110,7 @@ public struct StackedAreaChartConfig {
         "Dual Fuel": Color(red: 240/255, green: 189/255, blue: 144/255),
         "Natural Gas": Color(red: 126/255, green: 157/255, blue: 207/255),
         "Wind": Color(red: 119/255, green: 186/255, blue: 218/255)],
-        isoName: "NYISO",
+        isoName: nil,
         dataType: "Fuel Mix"
     )
 }
