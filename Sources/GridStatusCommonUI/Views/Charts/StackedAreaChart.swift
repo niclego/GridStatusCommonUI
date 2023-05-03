@@ -78,7 +78,7 @@ struct StackedAreaChart: View {
                             x: .value("Time", data.startUtc),
                             y: .value("Load", imports)
                         )
-                        .foregroundStyle(by: .value("Load", "Geothermal"))
+                        .foregroundStyle(by: .value("Load", "Imports"))
                     }
                     if let coalAndLignite = data.coalAndLignite {
                         AreaMark(
