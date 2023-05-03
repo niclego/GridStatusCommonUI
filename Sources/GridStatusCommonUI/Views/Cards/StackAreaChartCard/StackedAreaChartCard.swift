@@ -11,7 +11,7 @@ public struct StackedAreaChartCard: View {
         VStack() {
             HStack {
                 Text("\(config.dataType) - \(config.isoName)")
-                    .font(.title3)
+                    .font(.subheadline)
                 .adaptiveForegroundColor(GridStatusColor.title)
                 
                 Spacer()
