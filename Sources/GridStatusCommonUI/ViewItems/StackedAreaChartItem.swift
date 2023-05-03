@@ -45,20 +45,20 @@ struct StackedAreaChartItem: Identifiable {
 extension StackedAreaChartItem {
     fileprivate init(startUtc: String) {
         self.startUtc = startUtc
-        self.batteries = 1
-        self.biomass = 1
-        self.coal = 1
-        self.coalAndLignite = 1
+        self.batteries = nil
+        self.biomass = nil
+        self.coal = nil
+        self.coalAndLignite = nil
         self.duelFuel = 1
-        self.geothermal = 1
-        self.imports = 1
+        self.geothermal = nil
+        self.imports = nil
         self.hydro = 1
-        self.largeHydro = 1
+        self.largeHydro = nil
         self.naturalGas = 1
         self.nuclear = 1
-        self.oil = 1
-        self.other = 1
-        self.solar = 1
+        self.oil = nil
+        self.other = nil
+        self.solar = nil
         self.wind = 1
     }
     
