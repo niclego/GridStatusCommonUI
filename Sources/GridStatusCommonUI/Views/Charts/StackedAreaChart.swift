@@ -117,6 +117,7 @@ struct StackedAreaChart: View {
                     }
                 }
             }
+//            .chartYScale(domain: -15...30)
             .chartLegend(config.showLegend ? .visible : .hidden)
             .chartYAxis {
                 if config.showYAxis {
@@ -130,10 +131,9 @@ struct StackedAreaChart: View {
                     }
                 }
             }
-
             .chartXAxis {
                 if config.showXAxis {
-                    AxisMarks(preset: .aligned) { value in
+                    AxisMarks(preset: .automatic) { value in
                         AxisValueLabel {
                             if let timeUtc = value.as(String.self),
                                let label = label(for: timeUtc)
