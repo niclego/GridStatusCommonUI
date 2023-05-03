@@ -49,7 +49,7 @@ extension LoadableContent {
             case .loaded:
                 content()
             case .loading:
-                Text("Loading...")
+                ProgressView()
             case .noData:
                 Text("No data")
             }
