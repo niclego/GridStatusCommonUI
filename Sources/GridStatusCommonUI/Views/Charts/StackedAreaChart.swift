@@ -125,10 +125,51 @@ struct StackedAreaChart: View {
                     }
                 }
             }
-            .chartXAxis {}
+            .chartXAxis {
+                AxisMarks(preset: .aligned) { value in
+                    AxisValueLabel {
+                        if let timeUtc = value.as(String.self),
+                           let label = label(for: timeUtc)
+                        {
+                            Text(label)
+                                .font(.footnote)
+                                .padding([.leading, .trailing])
+                        }
+                    }
+                }
+            }
             .chartForegroundStyleScale(config.legendData)
         }
         .groupBoxStyle(ClearGroupBoxStyle())
+    }
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh a" // "a" prints "pm" or "am"
+        return formatter
+    }()
+    
+    private let isoDateFormatter: ISO8601DateFormatter = {
+        return ISO8601DateFormatter()
+    }()
+    
+    private func label(for timeUtc: String) -> String? {
+        guard let date = isoDateFormatter.date(from: timeUtc) else { return nil }
+        let comps = Calendar.current.dateComponents([.hour, .minute], from: date)
+
+        guard
+            ( comps.hour == 0 && comps.minute == 0 ) ||
+            ( [6, 12, 18].contains(comps.hour) && comps.minute == 0 ) ||
+            ( comps.hour == 23 && comps.minute == 55 )
+        else { return nil }
+        
+        if ( comps.hour == 23 && comps.minute == 55 ) {
+            return "12 AM"
+        }
+        
+        let hourString = dateFormatter.string(from: date) // "12 AM"
+        
+        return hourString
     }
 }
 
