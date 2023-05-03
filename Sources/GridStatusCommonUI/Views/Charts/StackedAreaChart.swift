@@ -145,7 +145,7 @@ struct StackedAreaChart: View {
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh a" // "a" prints "pm" or "am"
+        formatter.dateFormat = "h a" // "a" prints "pm" or "am"
         return formatter
     }()
     
