@@ -128,8 +128,24 @@ struct StackedAreaChart: View {
             .chartXAxis {}
             .chartForegroundStyleScale(config.legendData)
         }
+        .groupBoxStyle(ClearGroupBoxStyle())
     }
 }
+
+struct ClearGroupBoxStyle: GroupBoxStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.content
+            .padding(.top, 30)
+            .padding(20)
+            .background(.clear)
+            .cornerRadius(20)
+            .overlay(
+                configuration.label.padding(10),
+                alignment: .topLeading
+            )
+    }
+}
+
 
 struct StackedArea_Previews: PreviewProvider {
     static var previews: some View {
