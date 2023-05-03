@@ -5,7 +5,7 @@ struct StackedAreaChart: View {
     let config: StackedAreaChartConfig
 
     var body: some View {
-        GroupBox ( "\(config.dataType) - \(config.isoName)" ) {
+        GroupBox {
             Chart {
                 ForEach(config.data) { data in
                     if let batteries = data.batteries {
@@ -135,14 +135,7 @@ struct StackedAreaChart: View {
 struct ClearGroupBoxStyle: GroupBoxStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.content
-            .padding(.top, 30)
-            .padding(20)
             .background(.clear)
-            .cornerRadius(20)
-            .overlay(
-                configuration.label.padding(10),
-                alignment: .topLeading
-            )
     }
 }
 

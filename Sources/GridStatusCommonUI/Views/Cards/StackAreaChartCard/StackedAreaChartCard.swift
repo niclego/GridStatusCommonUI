@@ -9,6 +9,14 @@ public struct StackedAreaChartCard: View {
 
     public var body: some View {
         VStack() {
+            HStack {
+                Text("\(config.dataType) - \(config.isoName)")
+                    .font(.title3)
+                .adaptiveForegroundColor(GridStatusColor.title)
+                
+                Spacer()
+            }
+
             StackedAreaChart(config: config)
         }
         .padding()
