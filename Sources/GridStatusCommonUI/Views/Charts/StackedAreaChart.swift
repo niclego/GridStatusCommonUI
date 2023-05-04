@@ -163,7 +163,61 @@ struct StackedAreaChart: View {
                 "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
                 "Batteries": GridStatusColor.color(for: "Batteries").color(scheme: colorScheme),
                 "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme),
-                "Imports": GridStatusColor.color(for: "Imports").color(scheme: colorScheme),
+                "Imports": GridStatusColor.color(for: "Imports").color(scheme: colorScheme)
+            ]
+        case "ercot":
+            return [
+                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
+                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
+                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
+                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
+                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
+                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
+            ]
+        case "pjm":
+            return [
+                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
+                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
+                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
+                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
+                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
+                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
+            ]
+        case "nyiso":
+            return [
+                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
+                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
+                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
+                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
+                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
+                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
+            ]
+        case "isone":
+            return [
+                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
+                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
+                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
+                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
+                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
+                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
+            ]
+        case "miso":
+            return [
+                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
+                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
+                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
+                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
+                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
+                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
+            ]
+        case "spp":
+            return [
+                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
+                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
+                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
+                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
+                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
+                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
             ]
         default:
             return KeyValuePairs<String, Color>()

@@ -151,10 +151,14 @@ extension GridStatusColor {
             return .biomass
         case "Large Hydro":
             return .largeHydro
+        case "Hydro":
+            return .hydro
         case "Natural Gas":
             return .naturalGas
         case "Coal":
             return .coal
+        case "Coal And Lignite":
+            return .coalAndLignite
         case "Wind":
             return .wind
         case "Batteries":
