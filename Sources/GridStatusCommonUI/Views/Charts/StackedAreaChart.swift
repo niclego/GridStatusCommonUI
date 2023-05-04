@@ -154,16 +154,16 @@ struct StackedAreaChart: View {
         switch isoId {
         case "caiso":
             return [
-                "Nuclear": GridStatusColor.nuclear.color(scheme: colorScheme),
-                "Geothermal": GridStatusColor.geothermal.color(scheme: colorScheme),
-                "Biomass": GridStatusColor.biomass.color(scheme: colorScheme),
-                "Large Hydro": GridStatusColor.largeHydro.color(scheme: colorScheme),
-                "Natural Gas": GridStatusColor.naturalGas.color(scheme: colorScheme),
-                "Coal": GridStatusColor.coal.color(scheme: colorScheme),
-                "Wind": GridStatusColor.wind.color(scheme: colorScheme),
-                "Batteries": GridStatusColor.batteries.color(scheme: colorScheme),
-                "Solar": GridStatusColor.solar.color(scheme: colorScheme),
-                "Imports": GridStatusColor.imports.color(scheme: colorScheme),
+                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
+                "Geothermal": GridStatusColor.color(for: "Geothermal").color(scheme: colorScheme),
+                "Biomass": GridStatusColor.color(for: "Biomass").color(scheme: colorScheme),
+                "Large Hydro": GridStatusColor.color(for: "Large Hydro").color(scheme: colorScheme),
+                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
+                "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
+                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
+                "Batteries": GridStatusColor.color(for: "Batteries").color(scheme: colorScheme),
+                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme),
+                "Imports": GridStatusColor.color(for: "Imports").color(scheme: colorScheme),
             ]
         default:
             return KeyValuePairs<String, Color>()

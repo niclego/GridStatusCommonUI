@@ -5,6 +5,6 @@ struct ISODetailsCardDataText: View {
 
     var body: some View {
         Text(value)
-            .adaptiveForegroundColor(GridStatusColor.dataText)
+            .adaptiveForegroundColor(GridStatusColor.color(for: value))
     }
 }
