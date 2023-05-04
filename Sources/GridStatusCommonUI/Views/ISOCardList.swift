@@ -2,9 +2,9 @@ import SwiftUI
 
 public struct ISOCardList: View {
     let isos: [ISOViewItem]
-    let onTapAction: (ISOViewItem) -> Void
+    let onTapAction: (Int) -> Void
     
-    public init(isos: [ISOViewItem], onTapAction: @escaping (ISOViewItem) -> Void) {
+    public init(isos: [ISOViewItem], onTapAction: @escaping (Int) -> Void) {
         self.isos = isos
         self.onTapAction = onTapAction
     }
@@ -12,10 +12,10 @@ public struct ISOCardList: View {
     public var body: some View {
         ScrollView {
             VStack(spacing: 12) {
-                ForEach(isos) { iso in
-                    ISODetailsCard(iso: iso)
+                ForEach(Array(isos.enumerated()), id: \.offset) { index, element in
+                    ISODetailsCard(iso: element)
                         .onTapGesture {
-                            onTapAction(iso)
+                            onTapAction(index)
                         }
                 }
             }
