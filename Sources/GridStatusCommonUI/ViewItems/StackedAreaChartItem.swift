@@ -17,12 +17,13 @@ public struct StackedAreaChartItem: Identifiable {
     let nuclear: Double?
     let oil: Double?
     let other: Double?
+    let btmSolar: Double?
     let solar: Double?
     let wind: Double?
     
     public var id: String { startUtc }
     
-    public init(startUtc: String, batteries: Double? = nil, biomass: Double? = nil, coal: Double? = nil, coalAndLignite: Double? = nil, duelFuel: Double? = nil, geothermal: Double? = nil, imports: Double? = nil, hydro: Double? = nil, largeHydro: Double? = nil, naturalGas: Double? = nil, nuclear: Double? = nil, oil: Double? = nil, other: Double? = nil, solar: Double? = nil, wind: Double? = nil) {
+    public init(startUtc: String, batteries: Double? = nil, biomass: Double? = nil, coal: Double? = nil, coalAndLignite: Double? = nil, duelFuel: Double? = nil, geothermal: Double? = nil, imports: Double? = nil, hydro: Double? = nil, largeHydro: Double? = nil, naturalGas: Double? = nil, nuclear: Double? = nil, oil: Double? = nil, other: Double? = nil, btmSolar: Double, solar: Double? = nil, wind: Double? = nil) {
         self.startUtc = startUtc
         self.batteries = Self.loadInGW(load: batteries)
         self.biomass = Self.loadInGW(load: biomass)
@@ -37,6 +38,7 @@ public struct StackedAreaChartItem: Identifiable {
         self.nuclear = Self.loadInGW(load: nuclear)
         self.oil = Self.loadInGW(load: oil)
         self.other = Self.loadInGW(load: other)
+        self.btmSolar = Self.loadInGW(load: btmSolar)
         self.solar = Self.loadInGW(load: solar)
         self.wind = Self.loadInGW(load: wind)
     }
@@ -59,6 +61,7 @@ extension StackedAreaChartItem {
         self.oil = nil
         self.other = nil
         self.solar = nil
+        self.btmSolar = nil
         self.wind = 1
     }
     
