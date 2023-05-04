@@ -73,6 +73,13 @@ struct StackedAreaChart: View {
                         )
                         .foregroundStyle(by: .value("Load", "Solar"))
                     }
+                    if let btmSolar = data.btmSolar {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", btmSolar)
+                        )
+                        .foregroundStyle(by: .value("Load", "BTM Solar"))
+                    }
                     if let imports = data.imports {
                         AreaMark(
                             x: .value("Time", data.startUtc),

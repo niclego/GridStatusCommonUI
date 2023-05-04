@@ -174,7 +174,7 @@ extension GridStatusColor {
             return .batteries
         case "Solar":
             return .solar
-        case "BTW Solar":
+        case "BTM Solar":
             return .btmSolar
         case "Imports":
             return .imports
