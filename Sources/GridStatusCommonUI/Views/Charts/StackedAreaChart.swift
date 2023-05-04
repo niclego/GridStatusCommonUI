@@ -178,8 +178,8 @@ struct StackedAreaChart: View {
             return [
                 "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
                 "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
-                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
+                "Gas": GridStatusColor.color(for: "Gas").color(scheme: colorScheme),
+                "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
                 "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
                 "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
             ]
@@ -187,17 +187,16 @@ struct StackedAreaChart: View {
             return [
                 "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
                 "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
+                "Dual Fuel": GridStatusColor.color(for: "Dual Fuel").color(scheme: colorScheme),
                 "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
-                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
-                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
+                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme)
             ]
         case "isone":
             return [
                 "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
                 "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
                 "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
+                "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
                 "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
                 "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
             ]
@@ -206,7 +205,7 @@ struct StackedAreaChart: View {
                 "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
                 "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
                 "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
+                "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
                 "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
                 "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
             ]
@@ -215,7 +214,7 @@ struct StackedAreaChart: View {
                 "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
                 "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
                 "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
+                "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
                 "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
                 "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
             ]

@@ -14,7 +14,7 @@ public enum GridStatusColor {
     case biomass
     case coal
     case coalAndLignite
-    case duelFuel
+    case dualFuel
     case geothermal
     case imports
     case hydro
@@ -63,7 +63,7 @@ public enum GridStatusColor {
             return Color(red: 240/255, green: 189/255, blue: 144/255).opacity(0.8)
         case .coalAndLignite:
             return Color(red: 240/255, green: 189/255, blue: 144/255).opacity(0.8)
-        case .duelFuel:
+        case .dualFuel:
             return Color(red: 240/255, green: 189/255, blue: 144/255).opacity(0.8)
         case .geothermal:
             return Color(red: 152/255, green: 132/255, blue: 185/255).opacity(0.8)
@@ -114,7 +114,7 @@ public enum GridStatusColor {
             return Color(red: 240/255, green: 189/255, blue: 144/255)
         case .coalAndLignite:
             return Color(red: 240/255, green: 189/255, blue: 144/255)
-        case .duelFuel:
+        case .dualFuel:
             return Color(red: 240/255, green: 189/255, blue: 144/255)
         case .geothermal:
             return Color(red: 152/255, green: 132/255, blue: 185/255)
@@ -143,6 +143,10 @@ public enum GridStatusColor {
 extension GridStatusColor {
     static func color(for dataTitle: String) -> GridStatusColor {
         switch dataTitle {
+        case "Gas":
+            return .naturalGas
+        case "Dual Fuel":
+            return .dualFuel
         case "Nuclear":
             return .nuclear
         case "Geothermal":
