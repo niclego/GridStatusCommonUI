@@ -24,6 +24,7 @@ public enum GridStatusColor {
     case oil
     case other
     case solar
+    case btmSolar
     case wind
     
     public func color(scheme: ColorScheme) -> Color {
@@ -83,6 +84,8 @@ public enum GridStatusColor {
             return Color(red: 1, green: 2, blue: 3)
         case .solar:
             return Color(red: 232/255, green: 221/255, blue: 132/255).opacity(0.8)
+        case .btmSolar:
+            return Color(red: 237/255, green: 205/255, blue: 127/255).opacity(0.8)
         case .wind:
             return Color(red: 119/255, green: 186/255, blue: 218/255).opacity(0.8)
         }
@@ -134,6 +137,8 @@ public enum GridStatusColor {
             return Color(red: 1, green: 2, blue: 3)
         case .solar:
             return Color(red: 232/255, green: 221/255, blue: 132/255)
+        case .btmSolar:
+            return Color(red: 237/255, green: 205/255, blue: 127/255)
         case .wind:
             return Color(red: 119/255, green: 186/255, blue: 218/255)
         }
@@ -169,6 +174,8 @@ extension GridStatusColor {
             return .batteries
         case "Solar":
             return .solar
+        case "BTW Solar":
+            return .btmSolar
         case "Imports":
             return .imports
         default:

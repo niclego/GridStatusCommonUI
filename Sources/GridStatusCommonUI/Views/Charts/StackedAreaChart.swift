@@ -197,8 +197,10 @@ struct StackedAreaChart: View {
                 "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
                 "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
                 "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
+                "Oil": GridStatusColor.color(for: "Oil").color(scheme: colorScheme),
                 "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
-                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
+                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme),
+                "BTM Solar": GridStatusColor.color(for: "BTM Solar").color(scheme: colorScheme)
             ]
         case "miso":
             return [
