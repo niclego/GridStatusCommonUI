@@ -72,7 +72,7 @@ extension StackedAreaChartItem {
         
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
-        let items = (0...287).map { i in
+        let items = (0...50).map { i in
             let date = calendar.date(byAdding: .minute, value: 5 * i, to: startDate)!
             let timeStr = formatter.string(from: date)
             return StackedAreaChartItem(
