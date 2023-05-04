@@ -120,9 +120,6 @@ public struct StackedAreaChartConfig {
     public static let example: StackedAreaChartConfig = .init(
         data: StackedAreaChartItem.examples,
         isoId: "caiso",
-        dataType: "Fuel Mix",
-        showXAxis: true,
-        showYAxis: true,
-        showLegend: true
+        dataType: "Fuel Mix"
     )
 }
