@@ -41,11 +41,11 @@ public enum GridStatusColor {
         switch self {
             
             // UI Elements
-        case .cardBackground:
+        case .dashboardBackground:
             return Color(red: 0, green: 0, blue: 0)
         case .dataText:
             return Color.secondary
-        case .dashboardBackground:
+        case .cardBackground:
             return Color(red: 33/255, green: 33/255, blue: 34/255)
         case .subtitle:
             return Color.primary
