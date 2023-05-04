@@ -56,35 +56,35 @@ public enum GridStatusColor {
             
             // Fuel Types
         case .batteries:
-            return Color(red: 166/255, green: 218/255, blue: 189/255)
+            return Color(red: 166/255, green: 218/255, blue: 189/255).opacity(0.5)
         case .biomass:
-            return Color(red: 173/255, green: 121/255, blue: 165/255)
+            return Color(red: 173/255, green: 121/255, blue: 165/255).opacity(0.5)
         case .coal:
-            return Color(red: 240/255, green: 189/255, blue: 144/255)
+            return Color(red: 240/255, green: 189/255, blue: 144/255).opacity(0.5)
         case .coalAndLignite:
-            return Color(red: 240/255, green: 189/255, blue: 144/255)
+            return Color(red: 240/255, green: 189/255, blue: 144/255).opacity(0.5)
         case .duelFuel:
-            return Color(red: 240/255, green: 189/255, blue: 144/255)
+            return Color(red: 240/255, green: 189/255, blue: 144/255).opacity(0.5)
         case .geothermal:
-            return Color(red: 152/255, green: 132/255, blue: 185/255)
+            return Color(red: 152/255, green: 132/255, blue: 185/255).opacity(0.5)
         case .imports:
-            return Color(red: 194/255, green: 134/255, blue: 147/255)
+            return Color(red: 194/255, green: 134/255, blue: 147/255).opacity(0.5)
         case .hydro:
-            return Color(red: 156/255, green: 229/255, blue: 180/255)
+            return Color(red: 156/255, green: 229/255, blue: 180/255).opacity(0.5)
         case .largeHydro:
-            return Color(red: 156/255, green: 229/255, blue: 180/255)
+            return Color(red: 156/255, green: 229/255, blue: 180/255).opacity(0.5)
         case .naturalGas:
-            return Color(red: 126/255, green: 157/255, blue: 207/255)
+            return Color(red: 126/255, green: 157/255, blue: 207/255).opacity(0.5)
         case .nuclear:
-            return Color(red: 195/255, green: 230/255, blue: 154/255)
+            return Color(red: 195/255, green: 230/255, blue: 154/255).opacity(0.5)
         case .oil:
-            return Color(red: 187/255, green: 131/255, blue: 118/255)
+            return Color(red: 187/255, green: 131/255, blue: 118/255).opacity(0.5)
         case .other:
             return Color(red: 1, green: 2, blue: 3)
         case .solar:
-            return Color(red: 232/255, green: 221/255, blue: 132/255)
+            return Color(red: 232/255, green: 221/255, blue: 132/255).opacity(0.5)
         case .wind:
-            return Color(red: 119/255, green: 186/255, blue: 218/255)
+            return Color(red: 119/255, green: 186/255, blue: 218/255).opacity(0.5)
         }
     }
     
