@@ -117,7 +117,6 @@ struct StackedAreaChart: View {
                     }
                 }
             }
-            .chartYScale(domain: -5...27)
             .chartLegend(config.showLegend ? .visible : .hidden)
             .chartYAxis {
                 if config.showYAxis {

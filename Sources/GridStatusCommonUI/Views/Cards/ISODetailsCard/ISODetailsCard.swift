@@ -13,13 +13,16 @@ public struct ISODetailsCard: View {
                 displayName: iso.displayName,
                 updatedTime: iso.mostUpdatedTime
             )
+            .padding()
+
             ISODetailsCardData(
                 displayPrimarySource: iso.displayPrimarySource,
                 displayLoad: iso.displayLoad,
                 displayPrice: iso.displayPrice
             )
+            .padding()
+
         }
-        .padding()
         .adaptiveBackground(GridStatusColor.cardBackground)
         .cornerRadius(12)
     }
@@ -27,6 +30,8 @@ public struct ISODetailsCard: View {
 
 struct ISODetailsCard_Previews: PreviewProvider {
     static var previews: some View {
-        ISODetailsCard(iso: ISOViewItem.example).padding()
+        VStack(spacing: 0) {
+            ISODetailsCard(iso: ISOViewItem.example).padding()
+        }
     }
 }

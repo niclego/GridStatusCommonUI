@@ -112,13 +112,14 @@ public struct StackedAreaChartConfig {
         self.showLegend = showLegend
     }
     
-    var title: String { dataType + "- \(isoId.uppercased())" }
+    var title: String { dataType + " - \(isoId.uppercased())" }
     
     public static let example: StackedAreaChartConfig = .init(
         data: StackedAreaChartItem.examples,
         isoId: "caiso",
         dataType: "Fuel Mix",
         showXAxis: true,
-        showYAxis: true
+        showYAxis: true,
+        showLegend: true
     )
 }
