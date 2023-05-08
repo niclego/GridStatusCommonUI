@@ -63,7 +63,7 @@ public enum GridStatusColor {
         case .coal:
             return Color(red: 240/255, green: 189/255, blue: 144/255).opacity(0.8)
         case .coalAndLignite:
-            return Color(red: 240/255, green: 189/255, blue: 144/255).opacity(0.8)
+            return Color(red: 245/255, green: 194/255, blue: 143/255).opacity(0.8)
         case .dualFuel:
             return Color(red: 240/255, green: 189/255, blue: 144/255).opacity(0.8)
         case .geothermal:
@@ -73,13 +73,13 @@ public enum GridStatusColor {
         case .hydro:
             return Color(red: 156/255, green: 229/255, blue: 180/255).opacity(0.8)
         case .largeHydro:
-            return Color(red: 156/255, green: 229/255, blue: 180/255).opacity(0.8)
+            return Color(red: 102/255, green: 214/255, blue: 224/255).opacity(0.8)
         case .naturalGas:
             return Color(red: 126/255, green: 157/255, blue: 207/255).opacity(0.8)
         case .nuclear:
             return Color(red: 195/255, green: 230/255, blue: 154/255).opacity(0.8)
         case .oil:
-            return Color(red: 187/255, green: 131/255, blue: 118/255).opacity(0.8)
+            return Color(red: 244/255, green: 163/255, blue: 163/255).opacity(0.8)
         case .other:
             return Color(red: 1, green: 2, blue: 3)
         case .solar:
@@ -116,7 +116,7 @@ public enum GridStatusColor {
         case .coal:
             return Color(red: 240/255, green: 189/255, blue: 144/255)
         case .coalAndLignite:
-            return Color(red: 240/255, green: 189/255, blue: 144/255)
+            return Color(red: 245/255, green: 194/255, blue: 143/255)
         case .dualFuel:
             return Color(red: 240/255, green: 189/255, blue: 144/255)
         case .geothermal:
@@ -126,13 +126,13 @@ public enum GridStatusColor {
         case .hydro:
             return Color(red: 156/255, green: 229/255, blue: 180/255)
         case .largeHydro:
-            return Color(red: 156/255, green: 229/255, blue: 180/255)
+            return Color(red: 102/255, green: 214/255, blue: 224/255)
         case .naturalGas:
             return Color(red: 126/255, green: 157/255, blue: 207/255)
         case .nuclear:
             return Color(red: 195/255, green: 230/255, blue: 154/255)
         case .oil:
-            return Color(red: 187/255, green: 131/255, blue: 118/255)
+            return Color(red: 244/255, green: 163/255, blue: 163/255)
         case .other:
             return Color(red: 1, green: 2, blue: 3)
         case .solar:
@@ -168,6 +168,8 @@ extension GridStatusColor {
             return .coal
         case "Coal And Lignite":
             return .coalAndLignite
+        case "Oil":
+            return .oil
         case "Wind":
             return .wind
         case "Batteries":

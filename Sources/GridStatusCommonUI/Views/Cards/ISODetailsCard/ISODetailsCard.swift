@@ -8,19 +8,19 @@ public struct ISODetailsCard: View {
     }
 
     public var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 12) {
             ISODetailsCardHeader(
                 displayName: iso.displayName,
                 updatedTime: iso.mostUpdatedTime
             )
-            .padding()
+            .padding([.leading, .top, .trailing])
 
             ISODetailsCardData(
                 displayPrimarySource: iso.displayPrimarySource,
                 displayLoad: iso.displayLoad,
                 displayPrice: iso.displayPrice
             )
-            .padding()
+            .padding([.leading, .bottom, .trailing])
 
         }
         .adaptiveBackground(GridStatusColor.cardBackground)

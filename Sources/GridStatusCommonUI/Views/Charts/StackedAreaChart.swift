@@ -13,128 +13,112 @@ struct StackedAreaChart: View {
                     if let nuclear = data.nuclear {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", nuclear),
-                            stacking: .center
+                            y: .value("Load", nuclear)
                         )
                         .foregroundStyle(by: .value("Load", "Nuclear"))
+                    }
+                    if let hydro = data.hydro {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", hydro)
+                        )
+                        .foregroundStyle(by: .value("Load", "Hydro"))
+                    }
+                    if let duelFuel = data.duelFuel {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", duelFuel)
+                        )
+                        .foregroundStyle(by: .value("Load", "Dual Fuel"))
                     }
                     if let geothermal = data.geothermal {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", geothermal),
-                            stacking: .center
+                            y: .value("Load", geothermal)
                         )
                         .foregroundStyle(by: .value("Load", "Geothermal"))
                     }
                     if let biomass = data.biomass {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", biomass),
-                            stacking: .center
+                            y: .value("Load", biomass)
                         )
                         .foregroundStyle(by: .value("Load", "Biomass"))
                     }
                     if let largeHydro = data.largeHydro {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", largeHydro),
-                            stacking: .center
+                            y: .value("Load", largeHydro)
                         )
                         .foregroundStyle(by: .value("Load", "Large Hydro"))
                     }
                     if let naturalGas = data.naturalGas {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", naturalGas),
-                            stacking: .center
+                            y: .value("Load", naturalGas)
                         )
                         .foregroundStyle(by: .value("Load", "Natural Gas"))
+                    }
+                    if let coalAndLignite = data.coalAndLignite {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", coalAndLignite)
+                        )
+                        .foregroundStyle(by: .value("Load", "Coal And Lignite"))
                     }
                     if let coal = data.coal {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", coal),
-                            stacking: .center
+                            y: .value("Load", coal)
                         )
                         .foregroundStyle(by: .value("Load", "Coal"))
+                    }
+                    if let oil = data.oil {
+                        AreaMark(
+                            x: .value("Time", data.startUtc),
+                            y: .value("Load", oil)
+                        )
+                        .foregroundStyle(by: .value("Load", "Oil"))
                     }
                     if let wind = data.wind {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", wind),
-                            stacking: .center
+                            y: .value("Load", wind)
                         )
                         .foregroundStyle(by: .value("Load", "Wind"))
                     }
                     if let batteries = data.batteries {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", batteries),
-                            stacking: .center
+                            y: .value("Load", batteries)
                         )
                         .foregroundStyle(by: .value("Load", "Batteries"))
                     }
                     if let solar = data.solar {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", solar),
-                            stacking: .center
+                            y: .value("Load", solar)
                         )
                         .foregroundStyle(by: .value("Load", "Solar"))
                     }
                     if let btmSolar = data.btmSolar {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", btmSolar),
-                            stacking: .center
+                            y: .value("Load", btmSolar)
                         )
                         .foregroundStyle(by: .value("Load", "BTM Solar"))
                     }
                     if let imports = data.imports {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", imports),
-                            stacking: .center
+                            y: .value("Load", imports)
                         )
                         .foregroundStyle(by: .value("Load", "Imports"))
-                    }
-                    if let coalAndLignite = data.coalAndLignite {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", coalAndLignite),
-                            stacking: .center
-                        )
-                        .foregroundStyle(by: .value("Load", "Coal and Lignite"))
-                    }
-                    if let duelFuel = data.duelFuel {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", duelFuel),
-                            stacking: .center
-                        )
-                        .foregroundStyle(by: .value("Load", "Dual Fuel"))
-                    }
-                    if let hydro = data.hydro {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", hydro),
-                            stacking: .center
-                        )
-                        .foregroundStyle(by: .value("Load", "Hydro"))
-                    }
-                    if let oil = data.oil {
-                        AreaMark(
-                            x: .value("Time", data.startUtc),
-                            y: .value("Load", oil),
-                            stacking: .center
-                        )
-                        .foregroundStyle(by: .value("Load", "Oil"))
                     }
                     if let other = data.other {
                         AreaMark(
                             x: .value("Time", data.startUtc),
-                            y: .value("Load", other),
-                            stacking: .center
+                            y: .value("Load", other)
                         )
                         .foregroundStyle(by: .value("Load", "Other"))
                     }
@@ -203,6 +187,7 @@ struct StackedAreaChart: View {
                 "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
                 "Gas": GridStatusColor.color(for: "Gas").color(scheme: colorScheme),
                 "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
+                "Oil": GridStatusColor.color(for: "Oil").color(scheme: colorScheme),
                 "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
                 "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
             ]
