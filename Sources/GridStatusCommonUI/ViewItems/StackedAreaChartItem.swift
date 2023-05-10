@@ -3,7 +3,6 @@ import SwiftUI
 
 public struct StackedAreaChartItem: Identifiable {
     let startUtc: String
-    
     let batteries: Double?
     let biomass: Double?
     let coal: Double?
@@ -23,7 +22,25 @@ public struct StackedAreaChartItem: Identifiable {
     
     public var id: String { startUtc }
     
-    public init(startUtc: String, batteries: Double? = nil, biomass: Double? = nil, coal: Double? = nil, coalAndLignite: Double? = nil, duelFuel: Double? = nil, geothermal: Double? = nil, imports: Double? = nil, hydro: Double? = nil, largeHydro: Double? = nil, naturalGas: Double? = nil, nuclear: Double? = nil, oil: Double? = nil, other: Double? = nil, btmSolar: Double?, solar: Double? = nil, wind: Double? = nil) {
+    public init(
+        startUtc: String,
+        batteries: Double? = nil,
+        biomass: Double? = nil,
+        coal: Double? = nil,
+        coalAndLignite: Double? = nil,
+        duelFuel: Double? = nil,
+        geothermal: Double? = nil,
+        imports: Double? = nil,
+        hydro: Double? = nil,
+        largeHydro: Double? = nil,
+        naturalGas: Double? = nil,
+        nuclear: Double? = nil,
+        oil: Double? = nil,
+        other: Double? = nil,
+        btmSolar: Double?,
+        solar: Double? = nil,
+        wind: Double? = nil
+    ) {
         self.startUtc = startUtc
         self.batteries = Self.loadInGW(load: batteries)
         self.biomass = Self.loadInGW(load: biomass)
@@ -45,43 +62,43 @@ public struct StackedAreaChartItem: Identifiable {
 }
 
 extension StackedAreaChartItem {
-    fileprivate init(startUtc: String) {
-        self.startUtc = startUtc
-        self.batteries = nil
-        self.biomass = nil
-        self.coal = nil
-        self.coalAndLignite = nil
-        self.duelFuel = 1
-        self.geothermal = nil
-        self.imports = nil
-        self.hydro = 1
-        self.largeHydro = nil
-        self.naturalGas = 1
-        self.nuclear = 1
-        self.oil = nil
-        self.other = nil
-        self.solar = nil
-        self.btmSolar = nil
-        self.wind = 1
-    }
+//    fileprivate init(startUtc: String) {
+//        self.startUtc = startUtc
+//        self.batteries = nil
+//        self.biomass = nil
+//        self.coal = nil
+//        self.coalAndLignite = nil
+//        self.duelFuel = 1
+//        self.geothermal = nil
+//        self.imports = nil
+//        self.hydro = 1
+//        self.largeHydro = nil
+//        self.naturalGas = 1
+//        self.nuclear = 1
+//        self.oil = nil
+//        self.other = nil
+//        self.solar = nil
+//        self.btmSolar = nil
+//        self.wind = 1
+//    }
     
-    static let examples: [StackedAreaChartItem] = {
-        let calendar = Calendar.current
-        let startDate = calendar.startOfDay(for: Date.now)
-        let formatter = DateFormatter()
-        
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        
-        let items = (0...50).map { i in
-            let date = calendar.date(byAdding: .minute, value: 5 * i, to: startDate)!
-            let timeStr = formatter.string(from: date)
-            return StackedAreaChartItem(
-                startUtc: timeStr
-            )
-        }
-        
-        return items
-    }()
+//    static let examples: [StackedAreaChartItem] = {
+//        let calendar = Calendar.current
+//        let startDate = calendar.startOfDay(for: Date.now)
+//        let formatter = DateFormatter()
+//
+//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//
+//        let items = (0...50).map { i in
+//            let date = calendar.date(byAdding: .minute, value: 5 * i, to: startDate)!
+//            let timeStr = formatter.string(from: date)
+//            return StackedAreaChartItem(
+//                startUtc: timeStr
+//            )
+//        }
+//
+//        return items
+//    }()
 }
 
 extension StackedAreaChartItem {
@@ -89,38 +106,4 @@ extension StackedAreaChartItem {
         guard let load = load else { return 0 }
         return load / 1000
     }
-}
-
-public struct StackedAreaChartConfig {
-    let data: [StackedAreaChartItem]
-    let isoId: String
-    let dataType: String
-    let showXAxis: Bool
-    let showYAxis: Bool
-    let showLegend: Bool
-    
-    public init(
-        data: [StackedAreaChartItem],
-        isoId: String,
-        dataType: String,
-        showXAxis: Bool = false,
-        showYAxis: Bool = false,
-        showLegend: Bool = false
-    ) {
-        self.data = data
-        self.isoId = isoId
-        self.dataType = dataType
-        self.showXAxis = showXAxis
-        self.showYAxis = showYAxis
-        self.showLegend = showLegend
-    }
-    
-    var title: String { dataType + " - \(isoId.uppercased())" }
-    
-    public static let example: StackedAreaChartConfig = .init(
-        data: StackedAreaChartItem.examples,
-        isoId: "caiso",
-        dataType: "Fuel Mix",
-        showXAxis: true
-    )
 }

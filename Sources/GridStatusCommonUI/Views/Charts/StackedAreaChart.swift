@@ -5,19 +5,24 @@ struct StackedAreaChart: View {
     @Environment(\.colorScheme) private var colorScheme
 
     let config: StackedAreaChartConfig
+    let datas: [StackedAreaChartItem]
     let calendar: Calendar
     
-    init(config: StackedAreaChartConfig, timeZone: TimeZone) {
-        self.config = config
-
+    init(
+        config: StackedAreaChartConfig,
+        datas: [StackedAreaChartItem],
+        timeZone: TimeZone
+    ) {
         var calendar = Calendar.current
         calendar.timeZone = timeZone
         self.calendar = calendar
+        self.datas = datas
+        self.config = config
     }
 
     var body: some View {
         Chart {
-            ForEach(config.data) { data in
+            ForEach(datas) { data in
                 if let nuclear = data.nuclear {
                     AreaMark(
                         x: .value("Time", data.startUtc),
@@ -268,7 +273,8 @@ struct StackedAreaChart: View {
 struct StackedArea_Previews: PreviewProvider {
     static var previews: some View {
         StackedAreaChart(
-            config: StackedAreaChartConfig.example,
+            config: .init(isoId: "caiso", dataType: "Fuel Type"),
+            datas: [],
             timeZone: TimeZone.current
         )
         .frame(width: 360, height:169)
