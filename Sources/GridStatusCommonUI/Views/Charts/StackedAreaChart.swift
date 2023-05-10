@@ -37,6 +37,13 @@ struct StackedAreaChart: View {
                     )
                     .foregroundStyle(by: .value("Load", "Hydro"))
                 }
+                if let gas = data.gas {
+                    AreaMark(
+                        x: .value("Time", data.startUtc),
+                        y: .value("Load", gas)
+                    )
+                    .foregroundStyle(by: .value("Load", "Gas"))
+                }
                 if let duelFuel = data.duelFuel {
                     AreaMark(
                         x: .value("Time", data.startUtc),

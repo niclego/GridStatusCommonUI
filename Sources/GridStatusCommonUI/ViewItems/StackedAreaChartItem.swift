@@ -10,6 +10,7 @@ public struct StackedAreaChartItem: Identifiable {
     let duelFuel: Double?
     let geothermal: Double?
     let imports: Double?
+    let gas: Double?
     let hydro: Double?
     let largeHydro: Double?
     let naturalGas: Double?
@@ -31,6 +32,7 @@ public struct StackedAreaChartItem: Identifiable {
         duelFuel: Double? = nil,
         geothermal: Double? = nil,
         imports: Double? = nil,
+        gas: Double? = nil,
         hydro: Double? = nil,
         largeHydro: Double? = nil,
         naturalGas: Double? = nil,
@@ -49,6 +51,7 @@ public struct StackedAreaChartItem: Identifiable {
         self.duelFuel = Self.loadInGW(load: duelFuel)
         self.geothermal = Self.loadInGW(load: geothermal)
         self.imports = Self.loadInGW(load: imports)
+        self.gas = Self.loadInGW(load: gas)
         self.hydro = Self.loadInGW(load: hydro)
         self.largeHydro = Self.loadInGW(load: largeHydro)
         self.naturalGas = Self.loadInGW(load: naturalGas)
