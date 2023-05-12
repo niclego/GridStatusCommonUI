@@ -5,6 +5,8 @@ public struct StackedAreaChartCard: View {
     let datas: [StackedAreaChartItem]
     let timeZone: TimeZone
     
+    @State var s = ""
+    
     public init(config: StackedAreaChartConfig, datas: [StackedAreaChartItem], timeZone: TimeZone) {
         self.config = config
         self.datas = datas
@@ -24,8 +26,9 @@ public struct StackedAreaChartCard: View {
             StackedAreaChart(
                 config: config,
                 datas: datas,
-                timeZone: timeZone
-            )
+                timeZone: timeZone) { s in
+                    self.s = s
+                }
         }
         .padding()
         .adaptiveBackground(GridStatusColor.cardBackground)

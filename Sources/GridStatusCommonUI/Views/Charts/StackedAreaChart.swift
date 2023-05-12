@@ -8,16 +8,22 @@ struct StackedAreaChart: View {
     let datas: [StackedAreaChartItem]
     let calendar: Calendar
     
+    @State private var selectedElement: String = ""
+    
+    let selected: (String) -> Void
+    
     init(
         config: StackedAreaChartConfig,
         datas: [StackedAreaChartItem],
-        timeZone: TimeZone
+        timeZone: TimeZone,
+        selected: @escaping (String) -> Void
     ) {
         var calendar = Calendar.current
         calendar.timeZone = timeZone
         self.calendar = calendar
         self.datas = datas
         self.config = config
+        self.selected = selected
     }
 
     var body: some View {
@@ -144,136 +150,58 @@ struct StackedAreaChart: View {
                 }
             }
         }
+        .chartOverlay { proxy in
+             GeometryReader { geo in
+                 Rectangle().fill(.clear).contentShape(Rectangle())
+                     .gesture(
+                         SpatialTapGesture()
+                             .onEnded { value in
+                                 let element = findElement(location: value.location, proxy: proxy, geometry: geo)
+                                 if selectedElement == element {
+                                     // If tapping the same element, clear the selection.
+                                     selectedElement = ""
+                                 } else {
+                                     selectedElement = element
+                                 }
+                             }
+                             .exclusively (
+                                 before: DragGesture()
+                                     .onChanged { value in
+                                         selectedElement = findElement(location: value.location, proxy: proxy, geometry: geo)
+                                     }
+                             )
+                     )
+             }
+         }
         .chartLegend(config.showLegend ? .visible : .hidden)
-        .chartYAxis {
-            if config.showYAxis {
-                AxisMarks(position: .leading, values: .automatic) { value in
-                    AxisValueLabel() {
-                        if let intValue = value.as(Int.self) {
-                            Text("\(intValue) GW")
-                                .font(.system(size: 10))
-                        }
-                    }
-                }
-            }
-        }
-        .chartXAxis {
-            if config.showXAxis {
-                AxisMarks { value in
-                    AxisValueLabel {
-                        if let timeUtc = value.as(String.self),
-                           let label = label(for: timeUtc)
-                        {
-                            Text(label)
-                                .font(.footnote)
-                                .padding([.leading, .trailing])
-                        }
-                    }
-                }
-            }
-        }
-        .chartForegroundStyleScale(foregroundStyles(isoId: config.isoId))
-    }
-
-    private func foregroundStyles(isoId: String) -> KeyValuePairs<String, Color> {
-        switch isoId {
-        case "caiso":
-            return [
-                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
-                "Geothermal": GridStatusColor.color(for: "Geothermal").color(scheme: colorScheme),
-                "Biomass": GridStatusColor.color(for: "Biomass").color(scheme: colorScheme),
-                "Large Hydro": GridStatusColor.color(for: "Large Hydro").color(scheme: colorScheme),
-                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
-                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
-                "Batteries": GridStatusColor.color(for: "Batteries").color(scheme: colorScheme),
-                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme),
-                "Imports": GridStatusColor.color(for: "Imports").color(scheme: colorScheme)
-            ]
-        case "ercot":
-            return [
-                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
-                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
-                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Coal And Lignite": GridStatusColor.color(for: "Coal And Lignite").color(scheme: colorScheme),
-                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
-                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
-            ]
-        case "pjm":
-            return [
-                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
-                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
-                "Gas": GridStatusColor.color(for: "Gas").color(scheme: colorScheme),
-                "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
-                "Oil": GridStatusColor.color(for: "Oil").color(scheme: colorScheme),
-                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
-                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
-            ]
-        case "nyiso":
-            return [
-                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
-                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
-                "Dual Fuel": GridStatusColor.color(for: "Dual Fuel").color(scheme: colorScheme),
-                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme)
-            ]
-        case "isone":
-            return [
-                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
-                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
-                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
-                "Oil": GridStatusColor.color(for: "Oil").color(scheme: colorScheme),
-                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
-                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme),
-                "BTM Solar": GridStatusColor.color(for: "BTM Solar").color(scheme: colorScheme)
-            ]
-        case "miso":
-            return [
-                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
-                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
-                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
-                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
-                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
-            ]
-        case "spp":
-            return [
-                "Nuclear": GridStatusColor.color(for: "Nuclear").color(scheme: colorScheme),
-                "Hydro": GridStatusColor.color(for: "Hydro").color(scheme: colorScheme),
-                "Natural Gas": GridStatusColor.color(for: "Natural Gas").color(scheme: colorScheme),
-                "Coal": GridStatusColor.color(for: "Coal").color(scheme: colorScheme),
-                "Wind": GridStatusColor.color(for: "Wind").color(scheme: colorScheme),
-                "Solar": GridStatusColor.color(for: "Solar").color(scheme: colorScheme)
-            ]
-        default:
-            return KeyValuePairs<String, Color>()
-        }
-    }
-
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h a" // "a" prints "pm" or "am"
-        return formatter
-    }()
-
-    private let isoDateFormatter: ISO8601DateFormatter = {
-        return ISO8601DateFormatter()
-    }()
-
-    private func label(for timeUtc: String) -> String? {
-        guard let date = isoDateFormatter.date(from: timeUtc) else { return nil }
-
-        let comps = calendar.dateComponents([.hour, .minute], from: date)
-
-        guard
-            ( [6, 12, 18].contains(comps.hour) && comps.minute == 0 )
-        else { return nil }
-
-        let dateFormatter = dateFormatter
-        dateFormatter.timeZone = calendar.timeZone
-        let hourString = dateFormatter.string(from: date)
-        return hourString
+//        .chartYAxis {
+//            if config.showYAxis {
+//                AxisMarks(position: .leading, values: .automatic) { value in
+//                    AxisValueLabel() {
+//                        if let intValue = value.as(Int.self) {
+//                            Text("\(intValue) GW")
+//                                .font(.system(size: 10))
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        .chartXAxis {
+//            if config.showXAxis {
+//                AxisMarks { value in
+//                    AxisValueLabel {
+//                        if let timeUtc = value.as(String.self),
+//                           let label = label(for: timeUtc)
+//                        {
+//                            Text(label)
+//                                .font(.footnote)
+//                                .padding([.leading, .trailing])
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        .chartForegroundStyleScale(foregroundStyles(isoId: config.isoId))
     }
 }
 
@@ -282,7 +210,8 @@ struct StackedArea_Previews: PreviewProvider {
         StackedAreaChart(
             config: .init(isoId: "caiso", dataType: "Fuel Type"),
             datas: [],
-            timeZone: TimeZone.current
+            timeZone: TimeZone.current,
+            selected: {_ in}
         )
         .frame(width: 360, height:169)
     }
